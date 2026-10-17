@@ -1,410 +1,381 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Untitled</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="CoolUtils HTML exporter" />
-<style type="text/css">
-<!--
-body { color: #000000; background-color: #FFFFFF; }
-.python1-classname { color: #000080; font-weight: bold; }
-.python1-comment { color: #808080; font-style: italic; }
-.python1-commentedcode { color: #C0C0C0; font-style: italic; }
-.python1-documentation { color: #CC00FF; }
-.python1-float { color: #008080; }
-.python1-functionname { color: #008080; font-weight: bold; }
-.python1-hexadecimal { color: #008080; }
-.python1-identifier { color: #000000; }
-.python1-matchingbrace { color: #0000FF; font-weight: bold; }
-.python1-multi-linestring { color: #808000; }
-.python1-nonreservedkeyword { color: #000080; }
-.python1-number { color: #008080; }
-.python1-octal { color: #008080; }
-.python1-reservedword { font-weight: bold; }
-.python1-space { color: #C0C0C0; }
-.python1-string { color: #808000; }
-.python1-symbol { color: #800000; }
-.python1-syntaxerror { color: #FF0000; }
-.python1-systemfunctionsandvariables { font-weight: bold; }
-.python1-unbalancedbrace { color: #FFFF00; }
--->
-pre, pre code { white-space: pre-wrap; word-break: break-word; }
-pre, pre code { font-size: 10pt; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen, Dipika ❤️🌷</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        body {
+            background-color: #070410;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #app-wrapper {
+            position: relative;
+            width: 960px;
+            height: 850px;
+            max-width: 100vw;
+            max-height: 100vh;
+            aspect-ratio: 960 / 850;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #070410;
+            box-shadow: 0 0 50px rgba(244, 63, 94, 0.2);
+        }
+        #intro-overlay {
+            position: absolute;
+            top: 55.2%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .bloom-btn {
+            background-color: #e11d48;
+            color: #ffffff;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            padding: 12px 28px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.5);
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+        .bloom-btn:hover {
+            background-color: #be123c;
+            color: #fef08a;
+            transform: scale(1.02);
+        }
+        .bloom-btn:active {
+            transform: scale(0.98);
+        }
+        #popup-backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(4, 2, 10, 0.72);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        #popup-box {
+            width: 540px;
+            max-width: 95vw;
+            min-height: 310px;
+            background-color: #090514;
+            position: relative;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 45px rgba(245, 158, 11, 0.35);
+            border: 2px solid #f59e0b;
+            outline: 1px solid #fb7185;
+            outline-offset: -10px;
+            text-align: center;
+            animation: popIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .popup-crown {
+            font-size: 30px;
+            color: #fcd34d;
+            margin-top: 8px;
+        }
+        .popup-quote {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: bold;
+            font-style: italic;
+            color: #fff1f2;
+            margin: 12px 0;
+        }
+        .popup-sub {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fda4af;
+            margin-bottom: 18px;
+        }
+        .popup-close-btn {
+            background-color: #e11d48;
+            color: #ffffff;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            padding: 10px 26px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .popup-close-btn:hover {
+            background-color: #be123c;
+            color: #fef08a;
+        }
+        @media (max-width: 650px) {
+            .bloom-btn {
+                font-size: 13px;
+                padding: 9px 16px;
+            }
+            .popup-quote {
+                font-size: 19px;
+            }
+        }
+    </style>
 </head>
 <body>
-<!--StartFragment--><pre><code><span class="python1-reservedword">import</span><span class="python1-space"> </span><span class="python1-identifier">tkinter</span><span class="python1-space"> </span><span class="python1-reservedword">as</span><span class="python1-space"> </span><span class="python1-identifier">tk
-</span><span class="python1-reservedword">import</span><span class="python1-space"> </span><span class="python1-identifier">math
-</span><span class="python1-reservedword">import</span><span class="python1-space"> </span><span class="python1-identifier">random
 
-</span><span class="python1-comment"># Dipika Romantic Tulip — Windows / VS Code
-# No external packages or music files are required.
+<div id="app-wrapper">
+    <canvas id="tulipCanvas" width="960" height="850"></canvas>
+    <div id="intro-overlay">
+        <button class="bloom-btn" id="startBtn">💌  Click to Bloom Your Tulip, Dipika ❤️</button>
+    </div>
+</div>
 
-</span><span class="python1-identifier">APP_BG</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#070410&quot;
-</span><span class="python1-identifier">PANEL_BG</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#120824&quot;
-</span><span class="python1-identifier">GOLD</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#f59e0b&quot;
-</span><span class="python1-identifier">PINK</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#fda4af&quot;
-</span><span class="python1-identifier">HEART</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#fb7185&quot;
+<div id="popup-backdrop">
+    <div id="popup-box">
+        <div class="popup-crown">✨  👑  ✨</div>
+        <div class="popup-quote">“ this is only my queen, Dipika ”</div>
+        <div class="popup-sub">মই তোমাক ভাল পাওঁ •  মোক বিয়া কৰা  •  দীপিকা ❤️</div>
+        <button class="popup-close-btn" id="closePopupBtn">❤️  Forever My Queen, Dipika  ❤️</button>
+    </div>
+</div>
 
-</span><span class="python1-identifier">PHRASES</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[
-</span><span class="python1-space">    </span><span class="python1-string">&quot;I love you, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;আমি তোমাকে ভালোবাসি, দীপিকা ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;मैं तुमसे प्यार करता हूँ, दीपिका ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;میں تم سے پیار کرتا ہوں، دیپیکا ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;愛してるよ、ディーピカー ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;사랑해, 디피카 ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;迪皮卡，我爱你 ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;म तिमीलाई माया गर्छु, दीपिका ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;মই তোমাক ভাল পাওঁ, দীপিকা ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;தீபிகா, நான் உன்னை காதலிக்கிறேன் ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;దీపికా, నేను నిన్ను ప్రేమిస్తున్నాను ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;दीपिका, मी तुझ्यावर प्रेम करतो ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;દીપિકા, હું તને પ્રેમ કરું છું ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ਦੀਪਿਕਾ, ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ดิพิกา ฉันรักคุณ ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Aku cinta kamu, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Dipika, anh yêu em ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Je t’aime, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Te amo, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ti amo, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ich liebe dich, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Eu te amo, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Я люблю тебя, Дипика ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Σ’ αγαπώ, Ντιπίκα ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ik hou van jou, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Kocham cię, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Seni seviyorum, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Jag älskar dig, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;أحبك يا ديبيكا ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;אני אוהב אותך, דיפיקה ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;دیپیکا، دوستت دارم ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Nakupenda, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Mo nifẹ rẹ, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ngiyakuthanda, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Waan ku jeclahay, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ዲፒካ፣ እወድሻለሁ ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ek is lief vir jou, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ina son ki, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Tiako ianao, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Mahal kita, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Saya cinta padamu, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ဒိပီကာ၊ မင်းကိုချစ်တယ် ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ឌីពីកា ខ្ញុំស្រឡាញ់អ្នក ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;ດິພິກາ, ຂ້ອຍຮັກເຈົ້າ ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Би чамд хайртай, Дипика ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Мен сені сүйемін, Дипика ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Men seni sevaman, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ես քեզ սիրում եմ, Դիպիկա ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;მიყვარხარ, დიპიკა ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Я тебе кохаю, Діпіка ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Te iubesc, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Szeretlek, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Miluji tě, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ľúbim ťa, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Volim te, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Волим те, Дипика ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Обичам те, Дипика ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Jeg elsker dig, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Jeg elsker deg, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Rakastan sinua, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ég elska þig, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Tá grá agam duit, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Rwy'n dy garu di, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Maite zaitut, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;T'estimo, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Aloha au iā ʻoe, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;E aroha ana ahau ki a koe, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Ou te alofa ia te oe, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">    </span><span class="python1-string">&quot;Mi amas vin, Dipika ❤️&quot;</span><span class="python1-symbol">,
-]
+<script>
+const APP_BG = "#070410";
+const PANEL_BG = "#120824";
+const GOLD = "#f59e0b";
+const PINK = "#fda4af";
+const HEART = "#fb7185";
 
-</span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">build_tulip_segments</span><span class="python1-symbol">():
-</span><span class="python1-space">    </span><span class="python1-documentation">&quot;&quot;&quot;Create text strokes that form a stylized, layered tulip.&quot;&quot;&quot;
-</span><span class="python1-space">    </span><span class="python1-identifier">segments</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[]
-</span><span class="python1-space">    </span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-number">480
-</span><span class="python1-space">    </span><span class="python1-identifier">stream</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;   ✦   &quot;</span><span class="python1-symbol">.</span><span class="python1-identifier">join</span><span class="python1-symbol">(</span><span class="python1-identifier">PHRASES</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-string">&quot;   ✦   &quot;
-</span><span class="python1-space">    </span><span class="python1-identifier">stream_index</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-number">0
+const PHRASES = [
+    "I love you, Dipika ❤️",
+    "আমি তোমাকে ভালোবাসি, দীপিকা ❤️",
+    "मैं तुमसे प्यार करता हूँ, दीपिका ❤️",
+    "میں تم سے پیار کرتا ہوں، دیپیکا ❤️",
+    "愛してるよ、ディーピカー ❤️",
+    "사랑해, 디피카 ❤️",
+    "迪皮卡，我爱你 ❤️",
+    "म तिमीलाई माया गर्छु, दीपिका ❤️",
+    "মই তোমাক ভাল পাওঁ, দীপিকা ❤️",
+    "தீபிகா, நான் உன்னை காதலிக்கிறேன் ❤️",
+    "దీపికా, నేను నిన్ను ప్రేమిస్తున్నాను ❤️",
+    "दीपिका, मी तुझ्यावर प्रेम करतो ❤️",
+    "દીપિકા, હું તને પ્રેમ કરું છું ❤️",
+    "ਦੀਪਿਕਾ, ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ ❤️",
+    "ดิพิกา ฉันรักคุณ ❤️",
+    "Aku cinta kamu, Dipika ❤️",
+    "Dipika, anh yêu em ❤️",
+    "Je t’aime, Dipika ❤️",
+    "Te amo, Dipika ❤️",
+    "Ti amo, Dipika ❤️",
+    "Ich liebe dich, Dipika ❤️",
+    "Eu te amo, Dipika ❤️",
+    "Я люблю тебя, Дипика ❤️",
+    "Σ’ αγαπώ, Ντιπίκα ❤️",
+    "Ik hou van jou, Dipika ❤️",
+    "Kocham cię, Dipika ❤️",
+    "Seni seviyorum, Dipika ❤️",
+    "Jag älskar dig, Dipika ❤️",
+    "أحبك يا ديبيكا ❤️",
+    "אני אוהב אותך, דיפיקה ❤️",
+    "دیپیکا، دوستت دارم ❤️",
+    "Nakupenda, Dipika ❤️",
+    "Mo nifẹ rẹ, Dipika ❤️",
+    "Ngiyakuthanda, Dipika ❤️",
+    "Waan ku jeclahay, Dipika ❤️",
+    "ዲፒካ፣ እወድሻለሁ ❤️",
+    "Ek is lief vir jou, Dipika ❤️",
+    "Ina son ki, Dipika ❤️",
+    "Tiako ianao, Dipika ❤️",
+    "Mahal kita, Dipika ❤️",
+    "Saya cinta padamu, Dipika ❤️",
+    "ဒိပီကာ၊ မင်းကိုချစ်တယ် ❤️",
+    "ឌីពីកា ខ្ញុំស្រឡាញ់អ្នក ❤️",
+    "ດິພິກາ, ຂ້ອຍຮັກເຈົ້າ ❤️",
+    "Би чамд хайртай, Дипика ❤️",
+    "Мен сені сүйемін, Дипика ❤️",
+    "Men seni sevaman, Dipika ❤️",
+    "Ես քեզ սիրում եմ, Դիպիկա ❤️",
+    "მიყვარხარ, დიპიკა ❤️",
+    "Я тебе кохаю, Діпіка ❤️",
+    "Te iubesc, Dipika ❤️",
+    "Szeretlek, Dipika ❤️",
+    "Miluji tě, Dipika ❤️",
+    "Ľúbim ťa, Dipika ❤️",
+    "Volim te, Dipika ❤️",
+    "Волим те, Дипика ❤️",
+    "Обичам те, Дипика ❤️",
+    "Jeg elsker dig, Dipika ❤️",
+    "Jeg elsker deg, Dipika ❤️",
+    "Rakastan sinua, Dipika ❤️",
+    "Ég elska þig, Dipika ❤️",
+    "Tá grá agam duit, Dipika ❤️",
+    "Rwy'n dy garu di, Dipika ❤️",
+    "Maite zaitut, Dipika ❤️",
+    "T'estimo, Dipika ❤️",
+    "Aloha au iā ʻoe, Dipika ❤️",
+    "E aroha ana ahau ki a koe, Dipika ❤️",
+    "Ou te alofa ia te oe, Dipika ❤️",
+    "Mi amas vin, Dipika ❤️"
+];
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">length</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-identifier">nonlocal</span><span class="python1-space"> </span><span class="python1-identifier">stream_index
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">length</span><span class="python1-space"> </span><span class="python1-symbol">&lt;=</span><span class="python1-space"> </span><span class="python1-number">0</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">return</span><span class="python1-space"> </span><span class="python1-string">&quot;&quot;
-</span><span class="python1-space">        </span><span class="python1-identifier">out</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[]
-</span><span class="python1-space">        </span><span class="python1-identifier">remaining</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">length
-</span><span class="python1-space">        </span><span class="python1-reservedword">while</span><span class="python1-space"> </span><span class="python1-identifier">remaining</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-identifier">take</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">min</span><span class="python1-symbol">(</span><span class="python1-identifier">remaining</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-identifier">stream</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">stream_index</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">out</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">(</span><span class="python1-identifier">stream</span><span class="python1-symbol">[</span><span class="python1-identifier">stream_index</span><span class="python1-symbol">:</span><span class="python1-identifier">stream_index</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">take</span><span class="python1-symbol">])
-</span><span class="python1-space">            </span><span class="python1-identifier">stream_index</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">stream_index</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">take</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">%</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-identifier">stream</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">remaining</span><span class="python1-space"> </span><span class="python1-symbol">-=</span><span class="python1-space"> </span><span class="python1-identifier">take
-</span><span class="python1-space">        </span><span class="python1-reservedword">return</span><span class="python1-space"> </span><span class="python1-string">&quot;&quot;</span><span class="python1-symbol">.</span><span class="python1-identifier">join</span><span class="python1-symbol">(</span><span class="python1-identifier">out</span><span class="python1-symbol">)
+function buildTulipSegments() {
+    const segments = [];
+    const cx = 480;
+    const stream = Array.from(PHRASES.join("   ✦   ") + "   ✦   ");
+    let streamIndex = 0;
 
-</span><span class="python1-space">    </span><span class="python1-comment"># Stem and leaves
-</span><span class="python1-space">    </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">range</span><span class="python1-symbol">(</span><span class="python1-number">745</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">439</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-number">11</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-identifier">stem_x</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">10</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">sin</span><span class="python1-symbol">((</span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">440</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">55.0</span><span class="python1-symbol">))
-</span><span class="python1-space">        </span><span class="python1-identifier">stem_color</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#10b981&quot;</span><span class="python1-space"> </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">11</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">%</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">0</span><span class="python1-space"> </span><span class="python1-reservedword">else</span><span class="python1-space"> </span><span class="python1-string">&quot;#34d399&quot;
-</span><span class="python1-space">        </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">stem_x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-number">6</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">stem_color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
+    function textSlice(length) {
+        if (length <= 0) return "";
+        let out = [];
+        let remaining = length;
+        while (remaining > 0) {
+            const take = Math.min(remaining, stream.length - streamIndex);
+            out.push(stream.slice(streamIndex, streamIndex + take).join(""));
+            streamIndex = (streamIndex + take) % stream.length;
+            remaining -= take;
+        }
+        return out.join("");
+    }
 
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-number">495</span><span class="python1-space"> </span><span class="python1-symbol">&lt;=</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">&lt;=</span><span class="python1-space"> </span><span class="python1-number">715</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-identifier">p</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">715</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">220.0
-</span><span class="python1-space">            </span><span class="python1-identifier">arch_offset</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">195</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">sin</span><span class="python1-symbol">(</span><span class="python1-identifier">p</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">pi</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-float">0.82</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-identifier">width</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">20</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">sin</span><span class="python1-symbol">(</span><span class="python1-identifier">p</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">pi</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">1</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-float">0.25</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">p</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-space"> </span><span class="python1-symbol">&gt;=</span><span class="python1-space"> </span><span class="python1-number">3</span><span class="python1-symbol">:
-</span><span class="python1-space">                </span><span class="python1-identifier">leaf_color</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#059669&quot;</span><span class="python1-space"> </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">p</span><span class="python1-space"> </span><span class="python1-symbol">&lt;</span><span class="python1-space"> </span><span class="python1-float">0.5</span><span class="python1-space"> </span><span class="python1-reservedword">else</span><span class="python1-space"> </span><span class="python1-string">&quot;#10b981&quot;
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">stem_x</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">arch_offset</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">28</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,
-</span><span class="python1-space">                                 </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">width</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">leaf_color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">stem_x</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">arch_offset</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-number">28</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,
-</span><span class="python1-space">                                 </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">width</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">leaf_color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
+    for (let y = 745; y > 439; y -= 11) {
+        const stemX = cx + Math.trunc(10 * Math.sin((y - 440) / 55.0));
+        const stemColor = Math.floor(y / 11) % 2 === 0 ? "#10b981" : "#34d399";
+        segments.push([stemX, y, textSlice(6), stemColor, 9]);
 
-</span><span class="python1-space">    </span><span class="python1-comment"># Blossom cup and crown
-</span><span class="python1-space">    </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">range</span><span class="python1-symbol">(</span><span class="python1-number">440</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">134</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-number">10</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-identifier">t</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">440</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">305.0
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">t</span><span class="python1-space"> </span><span class="python1-symbol">&lt;</span><span class="python1-space"> </span><span class="python1-float">0.68</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-identifier">cup_curve</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">sin</span><span class="python1-symbol">((</span><span class="python1-identifier">t</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">0.68</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">pi</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-identifier">half_width</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">215</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">cup_curve</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">inner_chars</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">max</span><span class="python1-symbol">(</span><span class="python1-number">4</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-identifier">half_width</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-float">1.15</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">6.2</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">inner_chars</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#9d174d&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
+        if (y >= 495 && y <= 715) {
+            const p = (715 - y) / 220.0;
+            const archOffset = Math.trunc(195 * Math.sin(p * Math.PI * 0.82));
+            const width = Math.trunc(20 * Math.sin(p * Math.PI) * (1 - 0.25 * p));
+            if (width >= 3) {
+                const leafColor = p < 0.5 ? "#059669" : "#10b981";
+                segments.push([stemX - Math.floor(archOffset / 2) - 28, y, textSlice(width), leafColor, 9]);
+                segments.push([stemX + Math.floor(archOffset / 2) + 28, y, textSlice(width), leafColor, 9]);
+            }
+        }
+    }
 
-</span><span class="python1-space">            </span><span class="python1-identifier">outer_chars</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">max</span><span class="python1-symbol">(</span><span class="python1-number">4</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-identifier">half_width</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-float">0.92</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">6.0</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-identifier">left_color</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#fb7185&quot;</span><span class="python1-space"> </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">%</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">0</span><span class="python1-space"> </span><span class="python1-reservedword">else</span><span class="python1-space"> </span><span class="python1-string">&quot;#f43f5e&quot;
-</span><span class="python1-space">            </span><span class="python1-identifier">right_color</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-string">&quot;#f43f5e&quot;</span><span class="python1-space"> </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">%</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-number">0</span><span class="python1-space"> </span><span class="python1-reservedword">else</span><span class="python1-space"> </span><span class="python1-string">&quot;#fda4af&quot;
-</span><span class="python1-space">            </span><span class="python1-identifier">offset</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-identifier">half_width</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-float">0.46</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">offset</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">outer_chars</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">left_color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">offset</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">outer_chars</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">right_color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">))
-</span><span class="python1-space">        </span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-identifier">tip_t</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">t</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-float">0.68</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">0.32
-</span><span class="python1-space">            </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">tip_t</span><span class="python1-space"> </span><span class="python1-symbol">&lt;</span><span class="python1-space"> </span><span class="python1-float">0.65</span><span class="python1-symbol">:
-</span><span class="python1-space">                </span><span class="python1-identifier">back_t</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tip_t</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">0.65
-</span><span class="python1-space">                </span><span class="python1-identifier">back_chars</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">max</span><span class="python1-symbol">(</span><span class="python1-number">2</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">11</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">1</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">back_t</span><span class="python1-symbol">)))
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">66</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">back_chars</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#be185d&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-number">66</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">back_chars</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#be185d&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">9</span><span class="python1-symbol">))
+    for (let y = 440; y > 134; y -= 10) {
+        const t = (440 - y) / 305.0;
+        if (t < 0.68) {
+            const cupCurve = Math.sin((t / 0.68) * (Math.PI / 2));
+            const halfWidth = Math.trunc(215 * cupCurve);
+            const innerChars = Math.max(4, Math.trunc(halfWidth * 1.15 / 6.2));
+            segments.push([cx, y, textSlice(innerChars), "#9d174d", 9]);
 
-</span><span class="python1-space">            </span><span class="python1-identifier">petal_width</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">68</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">1</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-identifier">tip_t</span><span class="python1-space"> </span><span class="python1-symbol">**</span><span class="python1-space"> </span><span class="python1-float">1.35</span><span class="python1-symbol">)))
-</span><span class="python1-space">            </span><span class="python1-identifier">char_len</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">max</span><span class="python1-symbol">(</span><span class="python1-number">2</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-identifier">petal_width</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-float">6.4</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">char_len</span><span class="python1-space"> </span><span class="python1-symbol">&gt;=</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-symbol">:
-</span><span class="python1-space">                </span><span class="python1-identifier">shift</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">(</span><span class="python1-number">128</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-number">14</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-identifier">tip_t</span><span class="python1-symbol">)
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-identifier">shift</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">char_len</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#fb7185&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">))
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">char_len</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-number">2</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#e11d48&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">))
-</span><span class="python1-space">                </span><span class="python1-identifier">segments</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">((</span><span class="python1-identifier">cx</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">shift</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">(</span><span class="python1-identifier">char_len</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-string">&quot;#fda4af&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">))
-</span><span class="python1-space">    </span><span class="python1-reservedword">return</span><span class="python1-space"> </span><span class="python1-identifier">segments
+            const outerChars = Math.max(4, Math.trunc(halfWidth * 0.92 / 6.0));
+            const leftColor = Math.floor(y / 10) % 2 === 0 ? "#fb7185" : "#f43f5e";
+            const rightColor = Math.floor(y / 10) % 2 === 0 ? "#f43f5e" : "#fda4af";
+            const offset = Math.trunc(halfWidth * 0.46);
+            segments.push([cx - offset, y, textSlice(outerChars), leftColor, 10]);
+            segments.push([cx + offset, y, textSlice(outerChars), rightColor, 10]);
+        } else {
+            const tipT = (t - 0.68) / 0.32;
+            if (tipT < 0.65) {
+                const backT = tipT / 0.65;
+                const backChars = Math.max(2, Math.trunc(11 * (1 - backT)));
+                segments.push([cx - 66, y, textSlice(backChars), "#be185d", 9]);
+                segments.push([cx + 66, y, textSlice(backChars), "#be185d", 9]);
+            }
 
+            const petalWidth = Math.trunc(68 * (1 - Math.pow(tipT, 1.35)));
+            const charLen = Math.max(2, Math.trunc(petalWidth * 2 / 6.4));
+            if (charLen >= 2) {
+                const shift = Math.trunc(128 + 14 * tipT);
+                segments.push([cx - shift, y, textSlice(charLen), "#fb7185", 10]);
+                segments.push([cx, y, textSlice(charLen + 2), "#e11d48", 10]);
+                segments.push([cx + shift, y, textSlice(charLen), "#fda4af", 10]);
+            }
+        }
+    }
+    return segments;
+}
 
-</span><span class="python1-reservedword">class</span><span class="python1-space"> </span><span class="python1-classname">RomanticTulipApp</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">__init__</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">root</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">root
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">title</span><span class="python1-symbol">(</span><span class="python1-string">&quot;For My Queen, Dipika ❤️🌷&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">geometry</span><span class="python1-symbol">(</span><span class="python1-string">&quot;960x850&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">resizable</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">False</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">False</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">configure</span><span class="python1-symbol">(</span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-identifier">APP_BG</span><span class="python1-symbol">)
+const canvas = document.getElementById("tulipCanvas");
+const ctx = canvas.getContext("2d");
 
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Canvas</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-identifier">root</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">960</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">height</span><span class="python1-symbol">=</span><span class="python1-number">850</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-identifier">APP_BG</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">highlightthickness</span><span class="python1-symbol">=</span><span class="python1-number">0
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">pack</span><span class="python1-symbol">(</span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;both&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">expand</span><span class="python1-symbol">=</span><span class="python1-nonreservedkeyword">True</span><span class="python1-symbol">)
+let started = false;
+let bloomIndex = 0;
+let bloomFinished = false;
+let tickerText = "Every petal whispers your name across the world...";
+const tulipSegments = buildTulipSegments();
 
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">started</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">False
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">closed</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">False
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">animation_after_id</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">None
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">particles</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[]
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">tulip_segments</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">build_tulip_segments</span><span class="python1-symbol">()
+const symbols = ["✨", "❤️", "💖", "🌸", "✦", "🌷"];
+const particleColors = ["#fb7185", "#fcd34d", "#f43f5e", "#fda4af"];
+const particles = [];
 
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_draw_background</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_create_particles</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_animate_particles</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_draw_header</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_create_intro</span><span class="python1-symbol">()
+for (let i = 0; i < 36; i++) {
+    particles.push({
+        originX: Math.floor(Math.random() * (920 - 40 + 1)) + 40,
+        y: Math.floor(Math.random() * (800 - 80 + 1)) + 80,
+        x: 0,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        color: particleColors[Math.floor(Math.random() * particleColors.length)],
+        size: Math.floor(Math.random() * (15 - 9 + 1)) + 9,
+        phase: Math.random() * 6.28,
+        speed: 0.6 + Math.random() * 0.8
+    });
+}
 
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">protocol</span><span class="python1-symbol">(</span><span class="python1-string">&quot;WM_DELETE_WINDOW&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">close_app</span><span class="python1-symbol">)
+function updateParticles() {
+    for (const p of particles) {
+        p.phase += 0.06;
+        p.y -= p.speed;
+        if (p.y < 75) {
+            p.y = 810;
+            p.originX = Math.floor(Math.random() * (910 - 50 + 1)) + 50;
+        }
+        p.x = p.originX + Math.sin(p.phase) * 14;
+    }
+}
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">_draw_background</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_oval</span><span class="python1-symbol">(</span><span class="python1-number">180</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">90</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">780</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">690</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#0f0722&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-string">&quot;&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_oval</span><span class="python1-symbol">(</span><span class="python1-number">260</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">150</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">700</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">590</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#160a2c&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-string">&quot;&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(</span><span class="python1-number">18</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">18</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">942</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">832</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#3b1d54&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">1</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(</span><span class="python1-number">24</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">24</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">936</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">826</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-identifier">GOLD</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">1</span><span class="python1-symbol">)
+function renderScene() {
+    ctx.fillStyle = APP_BG;
+    ctx.fillRect(0, 0, 960, 850);
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">_create_particles</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-identifier">symbols</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[</span><span class="python1-string">&quot;✨&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;❤️&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;💖&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;🌸&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;✦&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;🌷&quot;</span><span class="python1-symbol">]
-</span><span class="python1-space">        </span><span class="python1-identifier">colors</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[</span><span class="python1-string">&quot;#fb7185&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;#fcd34d&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;#f43f5e&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;#fda4af&quot;</span><span class="python1-symbol">]
-</span><span class="python1-space">        </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">_</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">range</span><span class="python1-symbol">(</span><span class="python1-number">36</span><span class="python1-symbol">):
-</span><span class="python1-space">            </span><span class="python1-identifier">x</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">randint</span><span class="python1-symbol">(</span><span class="python1-number">40</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">920</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">randint</span><span class="python1-symbol">(</span><span class="python1-number">80</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">800</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">symbol</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">choice</span><span class="python1-symbol">(</span><span class="python1-identifier">symbols</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">color</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">choice</span><span class="python1-symbol">(</span><span class="python1-identifier">colors</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">item</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-identifier">x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-identifier">symbol</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-identifier">color</span><span class="python1-symbol">,
-</span><span class="python1-space">                </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI Emoji&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">randint</span><span class="python1-symbol">(</span><span class="python1-number">9</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">15</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">particles</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">([
-</span><span class="python1-space">                </span><span class="python1-identifier">item</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">uniform</span><span class="python1-symbol">(</span><span class="python1-number">0</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-float">6.28</span><span class="python1-symbol">),
-</span><span class="python1-space">                </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">uniform</span><span class="python1-symbol">(</span><span class="python1-float">0.6</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-float">1.4</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y
-</span><span class="python1-space">            </span><span class="python1-symbol">])
+    ctx.fillStyle = "#0f0722";
+    ctx.beginPath();
+    ctx.arc(480, 390, 300, 0, Math.PI * 2);
+    ctx.fill();
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">_animate_particles</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">closed</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">return
-</span><span class="python1-space">        </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-identifier">particle</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">particles</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-identifier">item</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">phase</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">speed</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">origin_x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">particle
-</span><span class="python1-space">            </span><span class="python1-identifier">phase</span><span class="python1-space"> </span><span class="python1-symbol">+=</span><span class="python1-space"> </span><span class="python1-float">0.06
-</span><span class="python1-space">            </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">-=</span><span class="python1-space"> </span><span class="python1-identifier">speed
-</span><span class="python1-space">            </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">&lt;</span><span class="python1-space"> </span><span class="python1-number">75</span><span class="python1-symbol">:
-</span><span class="python1-space">                </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-number">810
-</span><span class="python1-space">                </span><span class="python1-identifier">origin_x</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">random</span><span class="python1-symbol">.</span><span class="python1-identifier">randint</span><span class="python1-symbol">(</span><span class="python1-number">50</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">910</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">x</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">origin_x</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-identifier">math</span><span class="python1-symbol">.</span><span class="python1-identifier">sin</span><span class="python1-symbol">(</span><span class="python1-identifier">phase</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-number">14
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">coords</span><span class="python1-symbol">(</span><span class="python1-identifier">item</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-identifier">particle</span><span class="python1-symbol">[</span><span class="python1-number">1</span><span class="python1-symbol">]</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">phase
-</span><span class="python1-space">            </span><span class="python1-identifier">particle</span><span class="python1-symbol">[</span><span class="python1-number">3</span><span class="python1-symbol">]</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">origin_x
-</span><span class="python1-space">            </span><span class="python1-identifier">particle</span><span class="python1-symbol">[</span><span class="python1-number">4</span><span class="python1-symbol">]</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">y
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">after</span><span class="python1-symbol">(</span><span class="python1-number">55</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">_animate_particles</span><span class="python1-symbol">)
+    ctx.fillStyle = "#160a2c";
+    ctx.beginPath();
+    ctx.arc(480, 370, 220, 0, Math.PI * 2);
+    ctx.fill();
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">_draw_header</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">54</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;✨ 🌷  A Royal Tulip of 69 Languages for Dipika  🌷 ✨&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fecdd3&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Georgia&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">19</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">ticker_label</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">88</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;Every petal whispers your name across the world...&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fcd34d&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">12</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">),
-</span><span class="python1-space">            </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">850
-</span><span class="python1-space">        </span><span class="python1-symbol">)
+    ctx.strokeStyle = "#3b1d54";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(18, 18, 924, 814);
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">_create_intro</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">intro_items</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-symbol">[]
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">intro_items</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">250</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">290</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">710</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">540</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-identifier">PANEL_BG</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-identifier">GOLD</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">2
-</span><span class="python1-space">        </span><span class="python1-symbol">))
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">intro_items</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">355</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;👑  For My Queen, Dipika  👑&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fef08a&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Georgia&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">22</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-symbol">))
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">intro_items</span><span class="python1-symbol">.</span><span class="python1-identifier">append</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">400</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;69 Languages of Love Woven Into One Blooming Tulip&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-identifier">PINK</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">11</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-symbol">))
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">start_button</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Button</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;💌  Click to Bloom Your Tulip, Dipika ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">command</span><span class="python1-symbol">=</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">begin_experience</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#e11d48&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#ffffff&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">activebackground</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#be123c&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">activeforeground</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fef08a&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">13</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">relief</span><span class="python1-symbol">=</span><span class="python1-string">&quot;flat&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">padx</span><span class="python1-symbol">=</span><span class="python1-number">24</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">pady</span><span class="python1-symbol">=</span><span class="python1-number">10</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">cursor</span><span class="python1-symbol">=</span><span class="python1-string">&quot;hand2&quot;
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">start_button_window</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_window</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">468</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">window</span><span class="python1-symbol">=</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">start_button
-</span><span class="python1-space">        </span><span class="python1-symbol">)
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(24, 24, 912, 802);
 
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">begin_experience</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">started</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">return
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">started</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">True
-</span><span class="python1-space">        </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-identifier">item</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">intro_items</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">delete</span><span class="python1-symbol">(</span><span class="python1-identifier">item</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">delete</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">start_button_window</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">start_button</span><span class="python1-symbol">.</span><span class="python1-identifier">destroy</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">draw_bloom_step</span><span class="python1-symbol">(</span><span class="python1-number">0</span><span class="python1-symbol">)
-
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">draw_bloom_step</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">index</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">closed</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">return
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-identifier">index</span><span class="python1-space"> </span><span class="python1-symbol">&lt;</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">tulip_segments</span><span class="python1-symbol">):
-</span><span class="python1-space">            </span><span class="python1-identifier">end</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">min</span><span class="python1-symbol">(</span><span class="python1-identifier">index</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-number">3</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">tulip_segments</span><span class="python1-symbol">))
-</span><span class="python1-space">            </span><span class="python1-reservedword">for</span><span class="python1-space"> </span><span class="python1-identifier">x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text_slice</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">color</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">size</span><span class="python1-space"> </span><span class="python1-reservedword">in</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">tulip_segments</span><span class="python1-symbol">[</span><span class="python1-identifier">index</span><span class="python1-symbol">:</span><span class="python1-identifier">end</span><span class="python1-symbol">]:
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">                    </span><span class="python1-identifier">x</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">y</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-identifier">text_slice</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-identifier">color</span><span class="python1-symbol">,
-</span><span class="python1-space">                    </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">size</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">anchor</span><span class="python1-symbol">=</span><span class="python1-string">&quot;center&quot;
-</span><span class="python1-space">                </span><span class="python1-symbol">)
-
-</span><span class="python1-space">            </span><span class="python1-identifier">lang_index</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">min</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">int</span><span class="python1-symbol">((</span><span class="python1-identifier">end</span><span class="python1-space"> </span><span class="python1-symbol">/</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">tulip_segments</span><span class="python1-symbol">))</span><span class="python1-space"> </span><span class="python1-symbol">*</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-identifier">PHRASES</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">1</span><span class="python1-symbol">)),
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">len</span><span class="python1-symbol">(</span><span class="python1-identifier">PHRASES</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">1
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">itemconfig</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">ticker_label</span><span class="python1-symbol">,
-</span><span class="python1-space">                </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-identifier">f</span><span class="python1-string">&quot;🌍 Language {lang_index + 1} of {len(PHRASES)}: &quot;
-</span><span class="python1-space">                     </span><span class="python1-identifier">f</span><span class="python1-string">&quot;{PHRASES[lang_index]}&quot;
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">animation_after_id</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">after</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-number">100</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">draw_bloom_step</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">end
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">else</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">itemconfig</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">ticker_label</span><span class="python1-symbol">,
-</span><span class="python1-space">                </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-identifier">f</span><span class="python1-string">&quot;💖 All {len(PHRASES)} Languages Bloomed for My Queen, Dipika 💖&quot;
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-number">210</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">762</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">750</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">808</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#190b2e&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-identifier">GOLD</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">2
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">                </span><span class="python1-number">480</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">785</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;👑  this is only my queen, Dipika  ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">                </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fde047&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Georgia&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">18</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold italic&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-symbol">)
-</span><span class="python1-space">            </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">after</span><span class="python1-symbol">(</span><span class="python1-number">700</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">create_royal_popup</span><span class="python1-symbol">)
-
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">create_royal_popup</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">closed</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">return
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Toplevel</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">title</span><span class="python1-symbol">(</span><span class="python1-string">&quot;My Queen, Dipika 👑&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">geometry</span><span class="python1-symbol">(</span><span class="python1-string">&quot;540x310&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">configure</span><span class="python1-symbol">(</span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#090514&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">resizable</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">False</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">False</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">transient</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">grab_set</span><span class="python1-symbol">()
-
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">update_idletasks</span><span class="python1-symbol">()
-</span><span class="python1-space">        </span><span class="python1-identifier">x</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">winfo_x</span><span class="python1-symbol">()</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">960</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">540</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">2
-</span><span class="python1-space">        </span><span class="python1-identifier">y</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">winfo_y</span><span class="python1-symbol">()</span><span class="python1-space"> </span><span class="python1-symbol">+</span><span class="python1-space"> </span><span class="python1-symbol">(</span><span class="python1-number">850</span><span class="python1-space"> </span><span class="python1-symbol">-</span><span class="python1-space"> </span><span class="python1-number">310</span><span class="python1-symbol">)</span><span class="python1-space"> </span><span class="python1-symbol">//</span><span class="python1-space"> </span><span class="python1-number">2
-</span><span class="python1-space">        </span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">geometry</span><span class="python1-symbol">(</span><span class="python1-identifier">f</span><span class="python1-string">&quot;540x310+{max(0, x)}+{max(0, y)}&quot;</span><span class="python1-symbol">)
-
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Canvas</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-identifier">popup</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">540</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">height</span><span class="python1-symbol">=</span><span class="python1-number">310</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#090514&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">highlightthickness</span><span class="python1-symbol">=</span><span class="python1-number">0
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">pack</span><span class="python1-symbol">(</span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;both&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">expand</span><span class="python1-symbol">=</span><span class="python1-nonreservedkeyword">True</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(</span><span class="python1-number">14</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">14</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">526</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">296</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-identifier">GOLD</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">2</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_rectangle</span><span class="python1-symbol">(</span><span class="python1-number">22</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">22</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">518</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">288</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">outline</span><span class="python1-symbol">=</span><span class="python1-identifier">HEART</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">1</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">270</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">62</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;✨  👑  ✨&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fcd34d&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI Emoji&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">24</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">270</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">125</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;“ this is only my queen, Dipika ”&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fff1f2&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Georgia&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">20</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold italic&quot;</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_text</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-number">270</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">175</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;মই তোমাক ভাল পাওঁ •  মোক বিয়া কৰা  •  দীপিকা ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">fill</span><span class="python1-symbol">=</span><span class="python1-identifier">PINK</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">10</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">width</span><span class="python1-symbol">=</span><span class="python1-number">490
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">close_button</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Button</span><span class="python1-symbol">(
-</span><span class="python1-space">            </span><span class="python1-identifier">popup</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">text</span><span class="python1-symbol">=</span><span class="python1-string">&quot;❤️  Forever My Queen, Dipika  ❤️&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">command</span><span class="python1-symbol">=</span><span class="python1-identifier">popup</span><span class="python1-symbol">.</span><span class="python1-identifier">destroy</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">bg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#e11d48&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">fg</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#ffffff&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">activebackground</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#be123c&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">activeforeground</span><span class="python1-symbol">=</span><span class="python1-string">&quot;#fef08a&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">font</span><span class="python1-symbol">=(</span><span class="python1-string">&quot;Segoe UI&quot;</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">11</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-string">&quot;bold&quot;</span><span class="python1-symbol">),</span><span class="python1-space"> </span><span class="python1-identifier">relief</span><span class="python1-symbol">=</span><span class="python1-string">&quot;flat&quot;</span><span class="python1-symbol">,
-</span><span class="python1-space">            </span><span class="python1-identifier">padx</span><span class="python1-symbol">=</span><span class="python1-number">22</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">pady</span><span class="python1-symbol">=</span><span class="python1-number">8</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">cursor</span><span class="python1-symbol">=</span><span class="python1-string">&quot;hand2&quot;
-</span><span class="python1-space">        </span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-identifier">canvas</span><span class="python1-symbol">.</span><span class="python1-identifier">create_window</span><span class="python1-symbol">(</span><span class="python1-number">270</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-number">238</span><span class="python1-symbol">,</span><span class="python1-space"> </span><span class="python1-identifier">window</span><span class="python1-symbol">=</span><span class="python1-identifier">close_button</span><span class="python1-symbol">)
-
-</span><span class="python1-space">    </span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">close_app</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">):
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">closed</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">True
-</span><span class="python1-space">        </span><span class="python1-reservedword">try</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">animation_after_id</span><span class="python1-space"> </span><span class="python1-reservedword">is</span><span class="python1-space"> </span><span class="python1-reservedword">not</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">None</span><span class="python1-symbol">:
-</span><span class="python1-space">                </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">after_cancel</span><span class="python1-symbol">(</span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">animation_after_id</span><span class="python1-symbol">)
-</span><span class="python1-space">        </span><span class="python1-reservedword">except</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">TclError</span><span class="python1-symbol">:
-</span><span class="python1-space">            </span><span class="python1-reservedword">pass
-</span><span class="python1-space">        </span><span class="python1-nonreservedkeyword">self</span><span class="python1-symbol">.</span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">destroy</span><span class="python1-symbol">()
-
-
-</span><span class="python1-reservedword">def</span><span class="python1-space"> </span><span class="python1-functionname">main</span><span class="python1-symbol">():
-</span><span class="python1-space">    </span><span class="python1-identifier">root</span><span class="python1-space"> </span><span class="python1-symbol">=</span><span class="python1-space"> </span><span class="python1-identifier">tk</span><span class="python1-symbol">.</span><span class="python1-identifier">Tk</span><span class="python1-symbol">()
-</span><span class="python1-space">    </span><span class="python1-identifier">RomanticTulipApp</span><span class="python1-symbol">(</span><span class="python1-identifier">root</span><span class="python1-symbol">)
-</span><span class="python1-space">    </span><span class="python1-identifier">root</span><span class="python1-symbol">.</span><span class="python1-identifier">mainloop</span><span class="python1-symbol">()
-
-
-</span><span class="python1-reservedword">if</span><span class="python1-space"> </span><span class="python1-nonreservedkeyword">__name__</span><span class="python1-space"> </span><span class="python1-symbol">==</span><span class="python1-space"> </span><span class="python1-string">&quot;__main__&quot;</span><span class="python1-symbol">:
-</span><span class="python1-space">    </span><span class="python1-identifier">main</span><span class="python1-symbol">()
-
-</span></code></pre><!--EndFragment--></body>
-</html>
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (

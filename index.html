@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen, Dipika ❤️🌷</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        body {
+            background-color: #070410;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #app-wrapper {
+            position: relative;
+            width: 960px;
+            height: 850px;
+            max-width: 100vw;
+            max-height: 100vh;
+            aspect-ratio: 960 / 850;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #070410;
+            box-shadow: 0 0 50px rgba(244, 63, 94, 0.2);
+        }
+        #intro-overlay {
+            position: absolute;
+            top: 55.2%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .bloom-btn {
+            background-color: #e11d48;
+            color: #ffffff;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            padding: 12px 28px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.5);
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+            white-space: nowrap;
+        }
+        .bloom-btn:hover {
+            background-color: #be123c;
+            color: #fef08a;
+            transform: scale(1.02);
+        }
+        .bloom-btn:active {
+            transform: scale(0.98);
+        }
+        #popup-backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(4, 2, 10, 0.72);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        #popup-box {
+            width: 540px;
+            max-width: 95vw;
+            min-height: 310px;
+            background-color: #090514;
+            position: relative;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 45px rgba(245, 158, 11, 0.35);
+            border: 2px solid #f59e0b;
+            outline: 1px solid #fb7185;
+            outline-offset: -10px;
+            text-align: center;
+            animation: popIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .popup-crown {
+            font-size: 30px;
+            color: #fcd34d;
+            margin-top: 8px;
+        }
+        .popup-quote {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: bold;
+            font-style: italic;
+            color: #fff1f2;
+            margin: 12px 0;
+        }
+        .popup-sub {
+            font-family: "Segoe UI", sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fda4af;
+            margin-bottom: 18px;
+        }
+        .popup-close-btn {
+            background-color: #e11d48;
+            color: #ffffff;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            padding: 10px 26px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .popup-close-btn:hover {
+            background-color: #be123c;
+            color: #fef08a;
+        }
+        @media (max-width: 650px) {
+            .bloom-btn {
+                font-size: 13px;
+                padding: 9px 16px;
+            }
+            .popup-quote {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-wrapper">
+    <canvas id="tulipCanvas" width="960" height="850"></canvas>
+    <div id="intro-overlay">
+        <button class="bloom-btn" id="startBtn">💌  Click to Bloom Your Tulip, Dipika ❤️</button>
+    </div>
+</div>
+
+<div id="popup-backdrop">
+    <div id="popup-box">
+        <div class="popup-crown">✨  👑  ✨</div>
+        <div class="popup-quote">“ this is only my queen, Dipika ”</div>
+        <div class="popup-sub">মই তোমাক ভাল পাওঁ •  মোক বিয়া কৰা  •  দীপিকা ❤️</div>
+        <button class="popup-close-btn" id="closePopupBtn">❤️  Forever My Queen, Dipika  ❤️</button>
+    </div>
+</div>
+
+<script>
+const APP_BG = "#070410";
+const PANEL_BG = "#120824";
+const GOLD = "#f59e0b";
+const PINK = "#fda4af";
+const HEART = "#fb7185";
+
+const PHRASES = [
+    "I love you, Dipika ❤️",
+    "আমি তোমাকে ভালোবাসি, দীপিকা ❤️",
+    "मैं तुमसे प्यार करता हूँ, दीपिका ❤️",
+    "میں تم سے پیار کرتا ہوں، دیپیکا ❤️",
+    "愛してるよ、ディーピカー ❤️",
+    "사랑해, 디피카 ❤️",
+    "迪皮卡，我爱你 ❤️",
+    "म तिमीलाई माया गर्छु, दीपिका ❤️",
+    "মই তোমাক ভাল পাওঁ, দীপিকা ❤️",
+    "தீபிகா, நான் உன்னை காதலிக்கிறேன் ❤️",
+    "దీపికా, నేను నిన్ను ప్రేమిస్తున్నాను ❤️",
+    "दीपिका, मी तुझ्यावर प्रेम करतो ❤️",
+    "દીપિકા, હું તને પ્રેમ કરું છું ❤️",
+    "ਦੀਪਿਕਾ, ਮੈਂ ਤੈਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ ❤️",
+    "ดิพิกา ฉันรักคุณ ❤️",
+    "Aku cinta kamu, Dipika ❤️",
+    "Dipika, anh yêu em ❤️",
+    "Je t’aime, Dipika ❤️",
+    "Te amo, Dipika ❤️",
+    "Ti amo, Dipika ❤️",
+    "Ich liebe dich, Dipika ❤️",
+    "Eu te amo, Dipika ❤️",
+    "Я люблю тебя, Дипика ❤️",
+    "Σ’ αγαπώ, Ντιπίκα ❤️",
+    "Ik hou van jou, Dipika ❤️",
+    "Kocham cię, Dipika ❤️",
+    "Seni seviyorum, Dipika ❤️",
+    "Jag älskar dig, Dipika ❤️",
+    "أحبك يا ديبيكا ❤️",
+    "אני אוהב אותך, דיפיקה ❤️",
+    "دیپیکا، دوستت دارم ❤️",
+    "Nakupenda, Dipika ❤️",
+    "Mo nifẹ rẹ, Dipika ❤️",
+    "Ngiyakuthanda, Dipika ❤️",
+    "Waan ku jeclahay, Dipika ❤️",
+    "ዲፒካ፣ እወድሻለሁ ❤️",
+    "Ek is lief vir jou, Dipika ❤️",
+    "Ina son ki, Dipika ❤️",
+    "Tiako ianao, Dipika ❤️",
+    "Mahal kita, Dipika ❤️",
+    "Saya cinta padamu, Dipika ❤️",
+    "ဒိပီကာ၊ မင်းကိုချစ်တယ် ❤️",
+    "ឌីពីកា ខ្ញុំស្រឡាញ់អ្នក ❤️",
+    "ດິພິກາ, ຂ້ອຍຮັກເຈົ້າ ❤️",
+    "Би чамд хайртай, Дипика ❤️",
+    "Мен сені сүйемін, Дипика ❤️",
+    "Men seni sevaman, Dipika ❤️",
+    "Ես քեզ սիրում եմ, Դիպիկա ❤️",
+    "მიყვარხარ, დიპიკა ❤️",
+    "Я тебе кохаю, Діпіка ❤️",
+    "Te iubesc, Dipika ❤️",
+    "Szeretlek, Dipika ❤️",
+    "Miluji tě, Dipika ❤️",
+    "Ľúbim ťa, Dipika ❤️",
+    "Volim te, Dipika ❤️",
+    "Волим те, Дипика ❤️",
+    "Обичам те, Дипика ❤️",
+    "Jeg elsker dig, Dipika ❤️",
+    "Jeg elsker deg, Dipika ❤️",
+    "Rakastan sinua, Dipika ❤️",
+    "Ég elska þig, Dipika ❤️",
+    "Tá grá agam duit, Dipika ❤️",
+    "Rwy'n dy garu di, Dipika ❤️",
+    "Maite zaitut, Dipika ❤️",
+    "T'estimo, Dipika ❤️",
+    "Aloha au iā ʻoe, Dipika ❤️",
+    "E aroha ana ahau ki a koe, Dipika ❤️",
+    "Ou te alofa ia te oe, Dipika ❤️",
+    "Mi amas vin, Dipika ❤️"
+];
+
+function buildTulipSegments() {
+    const segments = [];
+    const cx = 480;
+    const stream = Array.from(PHRASES.join("   ✦   ") + "   ✦   ");
+    let streamIndex = 0;
+
+    function textSlice(length) {
+        if (length <= 0) return "";
+        let out = [];
+        let remaining = length;
+        while (remaining > 0) {
+            const take = Math.min(remaining, stream.length - streamIndex);
+            out.push(stream.slice(streamIndex, streamIndex + take).join(""));
+            streamIndex = (streamIndex + take) % stream.length;
+            remaining -= take;
+        }
+        return out.join("");
+    }
+
+    for (let y = 745; y > 439; y -= 11) {
+        const stemX = cx + Math.trunc(10 * Math.sin((y - 440) / 55.0));
+        const stemColor = Math.floor(y / 11) % 2 === 0 ? "#10b981" : "#34d399";
+        segments.push([stemX, y, textSlice(6), stemColor, 9]);
+
+        if (y >= 495 && y <= 715) {
+            const p = (715 - y) / 220.0;
+            const archOffset = Math.trunc(195 * Math.sin(p * Math.PI * 0.82));
+            const width = Math.trunc(20 * Math.sin(p * Math.PI) * (1 - 0.25 * p));
+            if (width >= 3) {
+                const leafColor = p < 0.5 ? "#059669" : "#10b981";
+                segments.push([stemX - Math.floor(archOffset / 2) - 28, y, textSlice(width), leafColor, 9]);
+                segments.push([stemX + Math.floor(archOffset / 2) + 28, y, textSlice(width), leafColor, 9]);
+            }
+        }
+    }
+
+    for (let y = 440; y > 134; y -= 10) {
+        const t = (440 - y) / 305.0;
+        if (t < 0.68) {
+            const cupCurve = Math.sin((t / 0.68) * (Math.PI / 2));
+            const halfWidth = Math.trunc(215 * cupCurve);
+            const innerChars = Math.max(4, Math.trunc(halfWidth * 1.15 / 6.2));
+            segments.push([cx, y, textSlice(innerChars), "#9d174d", 9]);
+
+            const outerChars = Math.max(4, Math.trunc(halfWidth * 0.92 / 6.0));
+            const leftColor = Math.floor(y / 10) % 2 === 0 ? "#fb7185" : "#f43f5e";
+            const rightColor = Math.floor(y / 10) % 2 === 0 ? "#f43f5e" : "#fda4af";
+            const offset = Math.trunc(halfWidth * 0.46);
+            segments.push([cx - offset, y, textSlice(outerChars), leftColor, 10]);
+            segments.push([cx + offset, y, textSlice(outerChars), rightColor, 10]);
+        } else {
+            const tipT = (t - 0.68) / 0.32;
+            if (tipT < 0.65) {
+                const backT = tipT / 0.65;
+                const backChars = Math.max(2, Math.trunc(11 * (1 - backT)));
+                segments.push([cx - 66, y, textSlice(backChars), "#be185d", 9]);
+                segments.push([cx + 66, y, textSlice(backChars), "#be185d", 9]);
+            }
+
+            const petalWidth = Math.trunc(68 * (1 - Math.pow(tipT, 1.35)));
+            const charLen = Math.max(2, Math.trunc(petalWidth * 2 / 6.4));
+            if (charLen >= 2) {
+                const shift = Math.trunc(128 + 14 * tipT);
+                segments.push([cx - shift, y, textSlice(charLen), "#fb7185", 10]);
+                segments.push([cx, y, textSlice(charLen + 2), "#e11d48", 10]);
+                segments.push([cx + shift, y, textSlice(charLen), "#fda4af", 10]);
+            }
+        }
+    }
+    return segments;
+}
+
+const canvas = document.getElementById("tulipCanvas");
+const ctx = canvas.getContext("2d");
+
+let started = false;
+let bloomIndex = 0;
+let bloomFinished = false;
+let tickerText = "Every petal whispers your name across the world...";
+const tulipSegments = buildTulipSegments();
+
+const symbols = ["✨", "❤️", "💖", "🌸", "✦", "🌷"];
+const particleColors = ["#fb7185", "#fcd34d", "#f43f5e", "#fda4af"];
+const particles = [];
+
+for (let i = 0; i < 36; i++) {
+    particles.push({
+        originX: Math.floor(Math.random() * (920 - 40 + 1)) + 40,
+        y: Math.floor(Math.random() * (800 - 80 + 1)) + 80,
+        x: 0,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        color: particleColors[Math.floor(Math.random() * particleColors.length)],
+        size: Math.floor(Math.random() * (15 - 9 + 1)) + 9,
+        phase: Math.random() * 6.28,
+        speed: 0.6 + Math.random() * 0.8
+    });
+}
+
+function updateParticles() {
+    for (const p of particles) {
+        p.phase += 0.06;
+        p.y -= p.speed;
+        if (p.y < 75) {
+            p.y = 810;
+            p.originX = Math.floor(Math.random() * (910 - 50 + 1)) + 50;
+        }
+        p.x = p.originX + Math.sin(p.phase) * 14;
+    }
+}
+
+function renderScene() {
+    ctx.fillStyle = APP_BG;
+    ctx.fillRect(0, 0, 960, 850);
+
+    ctx.fillStyle = "#0f0722";
+    ctx.beginPath();
+    ctx.arc(480, 390, 300, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#160a2c";
+    ctx.beginPath();
+    ctx.arc(480, 370, 220, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = "#3b1d54";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(18, 18, 924, 814);
+
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(24, 24, 912, 802);
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (const p of particles) {
+        ctx.font = `${p.size}px "Segoe UI Emoji", sans-serif`;
+        ctx.fillStyle = p.color;
+        ctx.fillText(p.symbol, p.x, p.y);
+    }
+
+    ctx.font = 'bold 24px Georgia, serif';
+    ctx.fillStyle = "#fecdd3";
+    ctx.fillText("✨ 🌷  A Royal Tulip of 69 Languages for Dipika  🌷 ✨", 480, 54);
+
+    ctx.font = 'bold 15px "Segoe UI", sans-serif';
+    ctx.fillStyle = "#fcd34d";
+    ctx.fillText(tickerText, 480, 88);
+
+    if (!started) {
+        ctx.fillStyle = PANEL_BG;
+        ctx.strokeStyle = GOLD;
+        ctx.lineWidth = 2;
+        ctx.fillRect(250, 290, 460, 250);
+        ctx.strokeRect(250, 290, 460, 250);
+
+        ctx.font = 'bold 28px Georgia, serif';
+        ctx.fillStyle = "#fef08a";
+        ctx.fillText("👑  For My Queen, Dipika  👑", 480, 355);
+
+        ctx.font = '15px "Segoe UI", sans-serif';
+        ctx.fillStyle = PINK;
+        ctx.fillText("69 Languages of Love Woven Into One Blooming Tulip", 480, 400);
+    } else {
+        for (let i = 0; i < bloomIndex; i++) {
+            const [x, y, text, color, size] = tulipSegments[i];
+            ctx.font = `bold ${size + 2}px "Segoe UI", sans-serif`;
+            ctx.fillStyle = color;
+            ctx.fillText(text, x, y);
+        }
+
+        if (bloomFinished) {
+            ctx.fillStyle = "#190b2e";
+            ctx.strokeStyle = GOLD;
+            ctx.lineWidth = 2;
+            ctx.fillRect(210, 762, 540, 46);
+            ctx.strokeRect(210, 762, 540, 46);
+
+            ctx.font = 'bold italic 23px Georgia, serif';
+            ctx.fillStyle = "#fde047";
+            ctx.fillText("👑  this is only my queen, Dipika  ❤️", 480, 785);
+        }
+    }
+}
+
+setInterval(() => {
+    updateParticles();
+    renderScene();
+}, 55);
+
+function drawBloomStep() {
+    if (bloomIndex < tulipSegments.length) {
+        bloomIndex = Math.min(bloomIndex + 3, tulipSegments.length);
+        const langIndex = Math.min(
+            Math.floor((bloomIndex / tulipSegments.length) * (PHRASES.length - 1)),
+            PHRASES.length - 1
+        );
+        tickerText = `🌍 Language ${langIndex + 1} of ${PHRASES.length}: ${PHRASES[langIndex]}`;
+        renderScene();
+        setTimeout(drawBloomStep, 100);
+    } else {
+        tickerText = `💖 All ${PHRASES.length} Languages Bloomed for My Queen, Dipika 💖`;
+        bloomFinished = true;
+        renderScene();
+        setTimeout(() => {
+            document.getElementById("popup-backdrop").style.display = "flex";
+        }, 700);
+    }
+}
+
+document.getElementById("startBtn").addEventListener("click", () => {
+    if (started) return;
+    started = true;
+    document.getElementById("intro-overlay").style.display = "none";
+    drawBloomStep();
+});
+
+document.getElementById("closePopupBtn").addEventListener("click", () => {
+    document.getElementById("popup-backdrop").style.display = "none";
+});
+
+renderScene();
+</script>
+</body>
+</html>
